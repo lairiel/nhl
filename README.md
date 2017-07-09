@@ -1,1 +1,1 @@
-nhl
+https://rawgit.com/lairiel/nhl/master/NHL_project/index.html
