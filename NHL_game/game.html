@@ -1,0 +1,737 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>NHL</title>
+  <style>
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: auto;
+    font-family: "Times New Roman", Helvetica, Arial, sans-serif;
+  }
+
+ .main {
+    margin: 0;
+    padding: 0
+    width: 100%;
+    height: 565px;
+    background-image: url(img/fon.jpg);
+    overflow: hidden;
+}
+
+.header-logo img {
+      width: 90px;
+      height: 100px;
+      padding-top: 30px;
+      margin-left: 50px;
+      padding-right: 0px;
+      float: left;
+      filter: drop-shadow(0 0 5px #B0C4DE);
+      transition-duration: 0.2s;
+  }
+
+/*.header-logo img:hover {
+    filter: drop-shadow(0 0 2px yellow);
+    transition-duration: 0.2s;
+  }    */
+
+.game-board {
+  width: 700px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px; 
+  margin-left: 330px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.game-question {
+  width: 700px;
+  height: 252px;
+  /*background-color: grey;*/
+  overflow: hidden;
+}
+
+.game-question img {
+  width: 250px;
+  border: 1px solid black;
+  margin-left: 50px;
+  float: left;
+  background-color: white;
+}
+
+.game-answers {
+  width: 290px;
+  height: 255px;
+  float: right;
+  margin-right: 50px;
+  /*background-color: pink;*/
+}
+
+.btn-answer {
+    display: block;
+    width: 290px;
+    height: 45px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 13px;
+    line-height: 45px;
+    font-size: 20px;
+}
+
+.btn-answer:hover {
+  background-color: #C5CAE9;
+}
+
+.game-stat {
+    width: 300px;
+    height: 90px;
+    /*background-color: blue;*/
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 30px;
+}
+
+h4 {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+.score {
+  font-size: 30px;
+}
+
+.next-question {
+  width: 200px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 18px;
+  color: black;
+  text-align: center;
+  line-height: 35px;
+  margin-top: 0px;
+  float: right;
+  margin-right: 50px;
+  background-color: #E1BEE7;
+  cursor: pointer;
+}
+
+.footer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    /*background-color: grey;*/
+  }
+
+.lang-version {
+    width: 149px;
+    height: 35px;
+    margin-left: 50px;
+    margin-top: 20px;
+    /*background-color: blue;*/
+    float: left;
+  }
+
+  .lang {
+    width: 60px;
+    height: 31px;
+    float: left;
+    border: 1px solid black;
+    font-size: 0;
+  }
+
+  .lang img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .lang img:hover {
+    filter: drop-shadow(0 0 5px black);
+  }
+
+  .lang-en {margin-left: 25px;}
+
+
+.game-controls {
+    width: 700px;
+    height: 57px;
+    /*background-color: yellow;*/
+    margin-top: 10px;
+    overflow: hidden;
+    float: left;
+    margin-left: 130px;
+}
+
+.game-controls a:first-child {
+  padding-left: 20px;
+}
+
+.game-controls .fa-arrow-left {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
+
+.controls {
+    width: 200px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 10px;
+}
+
+.window-result {
+    width: 200px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    overflow: hidden;
+    text-align: center;
+    line-height: 35px;
+    float: right;
+    font-family: "Times New Roman", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    background-color: rgba(240,98,146 ,1);
+    cursor: pointer;
+    margin-right: 50px;
+}
+
+
+.return-to-team {
+  position: relative;
+  float: left;
+  margin-left: 120px;
+  background-color: #FFC107;
+  padding-left: 12px;
+}
+
+.play-again {
+  float: right;
+  margin-right: 120px;
+  background-color: #8BC34A;
+}
+
+.play-again i {
+  margin-right: 10px;
+}
+
+.return-to-team:hover i {
+  animation-name: return-to-team;
+  animation-duration: 0.5s;
+}
+
+.play-again:hover i {
+  animation-name: play-again;
+  animation-duration: 0.5s;
+}
+
+@keyframes return-to-team {
+    0% {margin-left: 0;}
+    50% {margin-left: -5px;}
+    100% {margin-left: 0px;}
+}
+
+@keyframes play-again {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+.made-with-love {
+      width: 300px;
+      height: auto;
+      /*background-color: pink;*/
+      display: inline-block;
+      margin-top: 0px;
+      float: right;
+    }
+
+.footer p {
+    padding-right: 50px;
+    font-size: 20px;
+    text-align: right;
+    height: 40px;
+    line-height: 40px;
+  }
+
+.heart {
+    display: inline-block;
+    color: red;
+    font-size: 25px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
+
+.heart:hover {
+    font-size: 30px; 
+    cursor: pointer;
+  }
+
+  
+  .btn-answer.success {
+    background-color: #B2FF59; 
+  }
+
+  .btn-answer.error {
+    background-color: #F44336;
+  }
+
+  .highcharts-button {
+    display: none;
+  }
+
+ .highcharts-credits {
+  display: none;
+ }
+
+  </style>
+
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css">
+
+  </head>
+
+<body>
+
+<div class="main">
+
+    <!--<div class="header-logo"><img src="img/logo.png" alt="NHL"></div> -->
+
+    <div class="game-board">
+        <h3>{{Какому клубу принадлежит логотип?}}</h3>
+        <div class="game-question">
+          <img src="img-3/02_team.jpg" class="game-question-image">
+          <div class="game-answers">
+              <a class="btn-answer game-answers-1">{{Каролина}} {{Харрикейнз}}</a>
+              <a class="btn-answer game-answers-2">{{Бостон}} {{Брюинз}}</a>
+              <a class="btn-answer game-answers-3">{{Чикаго}} {{Блэкхокс}}</a>
+              <a class="btn-answer game-answers-4">{{Анахайм}} {{Дакс}}</a>
+          </div>
+        </div>
+       <div class="game-stat">
+          <h4>{{Статистика игры:}}</h4>
+          <span class="score score-correct">0</span> / 
+          <span class="score score-total">0</span>
+        </div>
+        <div class="next-question">{{Следующий вопрос}}</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg window-result hidden" data-toggle="modal" data-target="#myModal">
+  {{Перейти к результатам}}
+</button>
+
+      </div>
+    </div>
+</div>
+
+<div class="footer">
+  <div class="lang-version">
+      <a href="?ru" class="lang lang-ru"><img src="img/01_flag_ru.png"></a>
+      <a href="?en" class="lang lang-en"><img src="img/02_flag_en.png"></a>
+  </div>
+  <div class="game-controls">
+      <a class="controls return-to-team" href="../NHL_project/index.html"><i class="fa fa-arrow-left"></i>{{Вернуться к командам}}</a>
+      <a class="controls play-again" href="#"><i class="fa fa-repeat"></i>{{Играть снова}}</a>
+  </div>
+  <div class="made-with-love">
+      <p>{{Cделано с}} <b class="heart">❤</b> {{к хоккею}}</p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{Ваши результаты}}</h4>
+      </div>
+      <div class="modal-body">
+        <div id="container" style="min-width: 310px; height: 350px; max-width: 600px; margin: 0 auto"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{Закрыть}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="bootstrap.js"></script>
+
+<script src="dict.js"></script>
+<script type="text/javascript">
+
+function translate(str, lang){
+  while(true){
+    var pattern = "{{.+?}}";
+    var found = str.match(pattern);
+    if(!found) {
+      return str;
+    }
+    var word_initial = found[0].replace("{{", "").replace("}}", "");
+    var word_translated = ru_en[word_initial];
+    var translation = "";
+
+    if("ru" == lang) {
+      translation = word_initial;
+    } else if(typeof word_translated == "undefined") {
+      translation = word_initial;
+    } else {
+      translation = word_translated;
+    }
+
+    str = str.replace(/\{\{.+?\}\}/, translation)
+  }
+  return str;
+}
+var lang = "?en" == window.location.search ? "en" : "ru";
+
+var str = document.querySelector("body").innerHTML;
+var translated = translate(str, lang);
+document.querySelector("body").innerHTML = translated;
+
+</script>
+
+<script type="text/javascript">
+
+function showQuestion(currentImage, currentAnswers) {
+
+  var elementCurrentImage = document.querySelector('.game-question-image');
+  elementCurrentImage.src = currentImage;
+
+  var elementCurrentAnswers = document.querySelectorAll('.btn-answer');
+  for (var j = 0; j < elementCurrentAnswers.length; j++) {
+    elementCurrentAnswers[j].innerText = currentAnswers[j];
+  }
+}
+
+function listenForAnswer() {
+
+    var variantAnswers = document.querySelectorAll('.btn-answer');
+    for (var i = 0; i < variantAnswers.length; i++) {
+        variantAnswers[i].onclick = function(event){
+          if(haveAnswer) return;
+          haveAnswer = true;
+          clearAllAnswers();
+          checkAnswer(event);
+          changeStatistic(event);
+          updateStatistic();
+            if(scoreTotal === QUESTIONS_TO_SHOW) {
+              goToResult(event);
+            }
+        }
+    }
+}
+
+function clearAllAnswers() {
+    var variantAnswers = document.querySelectorAll('.btn-answer');
+    for (var i = 0; i < variantAnswers.length; i++) {
+        variantAnswers[i].classList.remove('success');
+        variantAnswers[i].classList.remove('error');
+    }
+}
+
+function checkAnswer(event) { 
+  if (event.currentTarget.innerText === correctAnswer) {
+      event.currentTarget.classList.add('success');
+  } else {
+      event.currentTarget.classList.add('error');
+  }
+}
+
+function changeStatistic(event) {
+  if (event.currentTarget.innerText === correctAnswer) {
+      scoreCorrect++;
+  } 
+}
+
+function updateStatistic(){
+  var elementScoreCorrect = document.querySelector('.score-correct');
+  elementScoreCorrect.innerText = scoreCorrect;
+  var elementScoreTotal = document.querySelector('.score-total');
+  elementScoreTotal.innerText = scoreTotal;
+}
+
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+}
+
+function choiseQuestion(){
+  resultChoiseQuestion = _choiseQuestion();
+  while(alreadyAnsweredQuestions.indexOf(resultChoiseQuestion[0]) !== -1){
+    resultChoiseQuestion = _choiseQuestion();  
+  }
+  return resultChoiseQuestion;  
+}
+
+function _choiseQuestion() {
+  var allGameImages = ["img/01_team.jpg", "img/02_team.jpg", "img/03_team.jpg", "img/04_team.jpg", "img/05_team.jpg", "img/06_team.jpg", "img/07_team.jpg", "img/08_team.jpg", "img-2/01_team.jpg", "img-2/02_team.jpg", "img-2/03_team.jpg", "img-2/04_team.jpg", "img-2/05_team.jpg", "img-2/06_team.jpg", "img-2/07_team.jpg", "img-2/08_team.jpg", "img-3/01_team.jpg", "img-3/02_team.jpg", "img-3/03_team.jpg", "img-3/04_team.jpg", "img-3/05_team.png", "img-3/06_team.jpg", "img-3/07_team.jpg", "img-4/01_team.jpg", "img-4/02_team.jpg", "img-4/03_team.jpg", "img-4/04_team.jpg", "img-4/05_team.jpg", "img-4/06_team.jpg", "img-4/07_team.jpg", "img-4/08_team.png"];  
+  var allGameAnswers = getAllGameAnswers();
+
+  var choiseIndex = Math.floor(Math.random() * 31);
+  var choiseQuestionImage = allGameImages[choiseIndex];
+  var choiseCorrectAnswer = allGameAnswers[choiseIndex];
+  
+  var answers = [choiseCorrectAnswer];
+  while (answers.length < 4) {
+    var choiseFalseAnswer1 = choiseNoRepeatAnswers(choiseCorrectAnswer);
+    if (answers.indexOf(choiseFalseAnswer1) === -1) {
+      answers.push(choiseFalseAnswer1);
+    }
+  }
+
+  shuffle(answers);
+
+    return [
+      choiseQuestionImage, 
+      answers,
+      choiseCorrectAnswer
+    ];
+}
+
+function getAllGameAnswers() {
+    var allGameAnswers = ["{{Каролина}} {{Харрикейнз}}", "{{Коламбус}} {{Блю Джекетс}}", "{{Нью-Джерси}} {{Девилз}}", "{{Нью-Йорк}} {{Айлендерс}}", "{{Нью-Йорк}} {{Рейнджерс}}", "{{Филадельфия}} {{Флайерз}}", "{{Питтсбург}} {{Пингвинз}}", "{{Вашингтон}} {{Кэпиталз}}", "{{Бостон}} {{Брюинз}}", "{{Баффало}} {{Сэйбрз}}", "{{Детройт}} {{Ред Уингз}}", "{{Флорида}} {{Пэнтерз}}", "{{Монреаль}} {{Канадиенс}}", "{{Оттава}} {{Сенаторз}}", "{{Тампа-Бэй}} {{Лайтнинг}}", "{{Торонто}} {{Мэйпл Лифс}}", "{{Чикаго}} {{Блэкхокс}}", "{{Колорадо}} {{Эвеланш}}", "{{Даллас}} {{Старз}}", "{{Миннесота}} {{Уайлд}}", "{{Нэшвилл}} {{Предаторз}}", "{{Сент-Луис}} {{Блюз}}", "{{Виннипег}} {{Джетс}}", "{{Анахайм}} {{Дакс}}", "{{Аризона}} {{Койотиз}}", "{{Калгари}} {{Флэймз}}", "{{Эдмонтон}} {{Ойлерз}}", "{{Лос-Анджелес}} {{Кингз}}", "{{Сан-Хосе}} {{Шаркс}}", "{{Ванкувер}} {{Кэнакс}}", "{{Вегас}} {{Голден Найтс}}"];
+    var lang = "?en" == window.location.search ? "en" : "ru";
+    for (var j = 0; j < allGameAnswers.length; j++) {
+    allGameAnswers[j] = translate(allGameAnswers[j], lang);
+  }
+    return allGameAnswers;
+}
+
+function choiseNoRepeatAnswers(correctAnswer) {
+  var allGameAnswers = getAllGameAnswers();
+  choiseRandomAnswer = correctAnswer;
+  while(choiseRandomAnswer === correctAnswer) {
+    var choiseIndexRandomAnswer = Math.floor(Math.random() * 4);
+    var choiseRandomAnswer = allGameAnswers[choiseIndexRandomAnswer];
+  }
+  return choiseRandomAnswer;
+}
+
+function addQuestionToAlreadyAnswered(image){
+  alreadyAnsweredQuestions.push(image);
+}
+
+function makeTurn(){
+  if(scoreTotal === QUESTIONS_TO_SHOW) {
+    return;
+  }
+  resultChoiseQuestion = choiseQuestion();
+  image = resultChoiseQuestion[0];
+  answers = resultChoiseQuestion[1];
+  correctAnswer = resultChoiseQuestion[2];
+  
+  showQuestion(image, answers);
+  addQuestionToAlreadyAnswered(image);
+  haveAnswer = false;
+  clearAllAnswers();
+  scoreTotal++;
+  updateStatistic();
+}
+
+function playAgain(){
+  alreadyAnsweredQuestions = [];
+  scoreCorrect = 0;
+  scoreTotal = 0;
+  haveAnswer = false;
+  makeTurn();
+  revertGoToResult();
+}
+
+function goToResult(event) {
+  var nextQuestion = document.querySelector('.next-question');
+  var windowResult = document.querySelector('.window-result');
+  if(scoreTotal === QUESTIONS_TO_SHOW) {
+    nextQuestion.classList.add('hidden');
+    windowResult.classList.remove('hidden');
+  }
+
+var scoreResultData;
+var colorsResult;
+var lang = "?en" == window.location.search ? "en" : "ru";
+
+if(scoreCorrect === 0) {
+  scoreResultData = [[translate('{{Неверно}}', lang),  scoreTotal - scoreCorrect]];
+  colorsResult = ['#DF5353'];
+}
+else if(scoreTotal - scoreCorrect === 0) {
+  scoreResultData = [[translate('{{Верно}}', lang),   scoreCorrect]];
+  colorsResult = ['#55BF3B'];
+}
+else {
+  scoreResultData = [
+    [translate('{{Верно}}', lang),   scoreCorrect],
+    [translate('{{Неверно}}', lang),  scoreTotal - scoreCorrect],
+  ];
+  colorsResult = ['#55BF3B', '#DF5353'];
+}
+
+Highcharts.theme = {
+   colors: colorsResult,
+   chart: {
+      backgroundColor: null,
+      style: {
+         fontFamily: 'Dosis, sans-serif'
+      }
+   },
+   title: {
+      style: {
+         fontSize: '16px',
+         fontWeight: 'bold',
+         textTransform: 'uppercase'
+      }
+   },
+   tooltip: {
+      borderWidth: 0,
+      backgroundColor: 'rgba(219,219,216,0.8)',
+      shadow: false
+   },
+   legend: {
+      itemStyle: {
+         fontWeight: 'bold',
+         fontSize: '13px'
+      }
+   },
+   xAxis: {
+      gridLineWidth: 1,
+      labels: {
+         style: {
+            fontSize: '12px'
+         }
+      }
+   },
+   yAxis: {
+      minorTickInterval: 'auto',
+      title: {
+         style: {
+            textTransform: 'uppercase'
+         }
+      },
+      labels: {
+         style: {
+            fontSize: '12px'
+         }
+      }
+   },
+   plotOptions: {
+      candlestick: {
+         lineColor: '#404048'
+      }
+   },
+
+
+   // General
+   background2: '#F0F0EA'
+
+};
+
+// Apply the theme
+Highcharts.setOptions(Highcharts.theme);
+
+
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: '',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 40
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%']
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: translate('{{В процентах}}', lang),
+        innerSize: '50%',
+        data: scoreResultData
+    }]
+});
+
+
+}
+
+function revertGoToResult() {
+  var nextQuestion = document.querySelector('.next-question');
+  var windowResult = document.querySelector('.window-result');
+    nextQuestion.classList.remove('hidden');
+    windowResult.classList.add('hidden');
+}
+
+var alreadyAnsweredQuestions = [];
+var scoreCorrect = 0;
+var scoreTotal = 0;
+var haveAnswer = false;
+var QUESTIONS_TO_SHOW = 10;
+
+var nextQuestion = document.querySelector('.next-question');
+nextQuestion.onclick = function(event) {
+  makeTurn();
+  updateStatistic();
+}
+
+var elementPlayAgain = document.querySelector('.play-again');
+elementPlayAgain.onclick = function(event) {
+  playAgain();
+}
+listenForAnswer();
+makeTurn();
+
+
+</script>
+</body>

@@ -1,0 +1,646 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>NHL</title>
+  <style>
+
+  body {
+      width: auto;
+      height: auto;
+      margin: 0;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .page-header {
+      width: 100%;
+      height: 165px;
+    }
+  .header-logo img {
+      width: 90px;
+      height: 100px;
+      padding-top: 30px;
+      margin-left: 50px;
+      padding-right: 0px;
+      float: left;
+      filter: drop-shadow(0 0 5px #B0C4DE);
+      transition-duration: 0.2s;
+  }
+
+  /*.header-logo img:hover {
+    filter: drop-shadow(0 0 2px yellow);
+    transition-duration: 0.2s;
+  }   */ 
+
+.main-nav {
+  margin: 0;
+  float: right;
+  padding-right: 50px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  line-height: 1.5;
+  color: black;
+  font-size: 20px;
+}
+
+.main-nav > li.east,
+.main-nav > li.west {
+  padding-left: 190px;
+  position: relative;
+}
+
+.main-nav > li > h3 {
+  text-transform: uppercase;
+  font-size: 20px;
+  transition-duration: 0.5s;
+}
+
+.main-nav > li {
+    display: inline-block;
+  }
+
+.main-nav > li.west > h3.active {
+  color: blue;
+}
+
+.main-nav > li.east > h3.active {
+  color: red;
+}
+
+.main-nav > li > ul {
+  padding: 0;
+}
+.main-nav > li > ul > li {
+  list-style: none;
+}
+.main-nav > li > ul > li > a {
+}
+
+.main-nav > li.west > ul > li > a.active {
+  color: blue;
+  transition-duration: 0.2s;
+}
+
+.main-nav > li.west > ul > li > a:hover {
+  color: #6495ED;
+  transition-duration: 0.2s;
+}
+
+.main-nav > li.east > ul > li > a.active {
+  color: red;
+  transition-duration: 0.2s;
+}
+
+.main-nav > li.east > ul > li > a:hover {
+  color: #FFA07A;
+  transition-duration: 0.2s;
+}
+
+.main-nav a {
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.conf-logo {
+  width: 150px;
+  height: 120px;
+  display: inline-block;
+  position: absolute;
+  margin-left: -170px;
+  top: 50%;
+  margin-top: -40px;
+}
+
+.conf-logo img {
+  max-width: 100%;
+  height: 100%;
+}
+
+  .good {
+    width: 100%;
+    height: 400px;
+    background-image: url(img/fon.jpg);
+  }
+
+  .container {
+    position: relative;
+    width: 800px;
+    height: 350px;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+  }
+
+  .team {
+    padding-right: 10px;
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    height: 170px;
+    margin: 10px 10px;
+  }
+
+  .team img {
+    width: 130px;
+    height: 130px; 
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid black;
+    overflow: hidden;
+    background-color: white;
+    transition-duration: 0.2s;
+  }
+
+  .team img:hover {
+    filter: saturate(4);
+    width: 140px;
+    height: 140px;
+    transition-duration: 0.2s;
+}
+  .team p {
+    width: 150px;
+    height: 20px;
+    padding: 0;
+    padding-top: 3px;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  .good:hover .fa {
+    opacity: 1;
+    transition-duration: 0.2s;
+  }
+
+  .fa:hover {
+    color: red;
+    transition-duration: 0.2s; 
+    cursor: pointer;   
+  }
+
+  .good .fa-chevron-left {
+    position: absolute;
+    top: 50%;
+    left: -60px;
+    margin-top: -30px;
+    opacity: 0.2;
+    transition-duration: 0.2s;
+  }
+
+  .good .fa-chevron-right {
+    position: absolute;
+    top: 50%;
+    right: -60px;
+    margin-top: -30px;
+    opacity: 0.2;
+    transition-duration: 0.2s;
+  }
+
+  .plan {
+    opacity: 0.6;
+  }
+
+.footer {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    /*background-color: grey;*/
+  }
+
+.lang-version {
+    width: 149px;
+    height: 35px;
+    margin-left: 50px;
+    margin-top: 20px;
+    /*background-color: blue;*/
+    float: left;
+  }
+
+  .lang {
+    width: 60px;
+    height: 31px;
+    float: left;
+    border: 1px solid black;
+    font-size: 0;
+  }
+
+  .lang img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .lang img:hover {
+    filter: drop-shadow(0 0 5px black);
+  }
+
+  .lang-en {margin-left: 25px;}
+
+
+.anons-game {
+    width: 700px;
+    height: 57px;
+    /*background-color: yellow;*/
+    margin-top: 10px;
+    overflow: hidden;
+    float: left;
+    margin-left: 130px;
+}
+
+.footer .anons-game p {
+    display: inline-block;
+    padding-right: 0;
+    font-size: 20px;
+    text-align: left;
+    height: 40px;
+    line-height: 20px;
+    /*background-color: red;*/
+    width: 400px;
+    margin-left: 40px;
+}
+
+.play-game {
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    line-height: 35px;
+    margin-top: 12px;
+    float: right;
+    margin-right: 40px;
+    background-color: #8BC34A;
+    text-transform: uppercase;
+}
+
+.play-game:hover {
+  background-color: #76FF03;
+}
+
+.made-with-love {
+      width: 300px;
+      height: auto;
+      /*background-color: pink;*/
+      display: inline-block;
+      margin-top: 0px;
+      float: right;
+    }
+
+.footer .made-with-love p {
+    padding-right: 50px;
+    font-size: 20px;
+    text-align: right;
+    height: 40px;
+    line-height: 40px;
+  }
+
+.heart {
+    display: inline-block;
+    color: red;
+    font-size: 25px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+  }
+
+.heart:hover {
+    font-size: 30px; 
+    cursor: pointer;
+  }
+
+  </style>
+
+<link rel="stylesheet" href="css/font-awesome.min.css">
+
+  </head>
+
+
+  <body>
+
+<div class="page-header">
+      <div class="header-top">
+          <a class="header-logo" href="https://www.nhl.com/ru" target="_blank">
+            <img src="img/logo.png" alt="NHL">
+          </a>
+        
+          <ul class="main-nav"> 
+            <li class="west">
+              <img src="img/01_conf_west.png" class="conf-logo conf-west">
+              <h3 class="conf conf-1 active">{{Западная конференция}}</h3>
+              <ul>
+                <li><a class="link-division link-division-1 active" data-division="division-1" data-conf="conf-1">{{Центральный дивизион}}</a></li>
+                <li><a class="link-division link-division-2" data-division="division-2" data-conf="conf-1">{{Тихоокеанский дивизион}}</a></li>
+              </ul>
+            </li>
+
+            <li class="east">
+              <img src="img/01_conf_east.png" class="conf-logo conf-east">
+              <h3 class="conf conf-2">{{Восточная конференция}}</h3>
+              <ul>
+                <li><a class="link-division link-division-3" data-division="division-3" data-conf="conf-2">{{Дивизион Метраполитан}}</a></li>
+                <li><a class="link-division link-division-4" data-division="division-4" data-conf="conf-2">{{Атлантический дивизион}}</a></li>
+              </ul>
+            </li>
+         </ul>
+
+      </div>
+</div>
+
+<div class="good">
+  <div class="container">
+
+  <i class="link-division-prev fa fa-chevron-left fa-5x"></i> 
+  <i class="link-division-next fa fa-chevron-right fa-5x"></i>
+
+  <div class="division division-1">
+      <a class="team team-1" href="https://www.nhl.com/blackhawks" target="_blank">
+        <img src="img-3/01_team.jpg" alt="NHL">
+        <p>{{Чикаго}} <br>{{Блэкхокс}}</p>
+      </a>
+      <a class="team team-2" href="https://www.nhl.com/avalanche" target="_blank">
+        <img src="img-3/02_team.jpg" alt="NHL">
+        <p>{{Колорадо}} <br>{{Эвеланш}}</p>
+      </a>
+      <a class="team team-3" href="https://www.nhl.com/stars" target="_blank">
+        <img src="img-3/03_team.jpg" alt="NHL">
+        <p>{{Даллас}} <br>{{Старз}}</p>
+      </a>
+      <a class="team team-4" href="https://www.nhl.com/wild" target="_blank">
+        <img src="img-3/04_team.jpg" alt="NHL">
+        <p>{{Миннесота}} <br>{{Уайлд}}</p>
+      </a>
+      <a class="team team-5" href="https://www.nhl.com/predators" target="_blank">
+        <img src="img-3/05_team.png" alt="NHL">
+        <p>{{Нэшвилл}}<br>{{Предаторз}}</p>
+      </a>
+      <a class="team team-6" href="https://www.nhl.com/blues" target="_blank">
+        <img src="img-3/06_team.jpg" alt="NHL">
+        <p>{{Сент-Луис}} <br>{{Блюз}}</p>
+      </a>
+      <a class="team team-7" href="https://www.nhl.com/jets" target="_blank">
+        <img src="img-3/07_team.jpg" alt="NHL">
+        <p>{{Виннипег}} <br>{{Джетс}}</p>
+      </a>
+    </div>
+
+    <div class="division division-2 hidden">
+      <a class="team team-1" href="https://www.nhl.com/ducks" target="_blank">
+        <img src="img-4/01_team.jpg" alt="NHL">
+        <p>{{Анахайм}} <br>{{Дакс}}</p>
+      </a>
+      <a class="team team-2" href="https://www.nhl.com/coyotes" target="_blank">
+        <img src="img-4/02_team.jpg" alt="NHL">
+        <p>{{Аризона}} <br>{{Койотиз}}</p>
+      </a>
+      <a class="team team-3" href="https://www.nhl.com/flames" target="_blank">
+        <img src="img-4/03_team.jpg" alt="NHL">
+        <p>{{Калгари}} <br>{{Флэймз}}</p>
+      </a>
+      <a class="team team-4" href="https://www.nhl.com/oilers" target="_blank">
+        <img src="img-4/04_team.jpg" alt="NHL">
+        <p>{{Эдмонтон}} <br>{{Ойлерз}}</p>
+      </a>
+      <a class="team team-5" href="https://www.nhl.com/kings" target="_blank">
+        <img src="img-4/05_team.jpg" alt="NHL">
+        <p>{{Лос-Анджелес}} <br>{{Кингз}}</p>
+      </a>
+      <a class="team team-6" href="https://www.nhl.com/sharks" target="_blank">
+        <img src="img-4/06_team.jpg" alt="NHL">
+        <p>{{Сан-Хосе}} <br>{{Шаркс}}</p>
+      </a>
+      <a class="team team-7" href="https://www.nhl.com/canucks" target="_blank">
+        <img src="img-4/07_team.jpg" alt="NHL">
+        <p>{{Ванкувер}} <br>{{Кэнакс}}</p>
+      </a>
+      <a class="team team-8 plan" href="https://www.nhl.com/goldenknights/" target="_blank">
+        <img src="img-4/08_team.png" alt="NHL">
+        <p>{{Вегас}} <br>{{Голден Найтс}}</p>
+      </a>
+    </div>
+
+    <div class="division division-3 hidden">
+      <a class="team team-1" href="https://www.nhl.com/hurricanes" target="_blank">
+        <img src="img/01_team.jpg" alt="NHL">
+        <p>{{Каролина}} <br>{{Харрикейнз}}</p>
+      </a>
+      <a class="team team-2" href="https://www.nhl.com/bluejackets" target="_blank">
+        <img src="img/02_team.jpg" alt="NHL">
+        <p>{{Коламбус}} <br>{{Блю Джекетс}}</p>
+      </a>
+      <a class="team team-3" href="https://www.nhl.com/devils" target="_blank">
+        <img src="img/03_team.jpg" alt="NHL">
+        <p>{{Нью-Джерси}} <br>{{Девилз}}</p>
+      </a>
+      <a class="team team-4" href="https://www.nhl.com/islanders" target="_blank">
+        <img src="img/04_team.jpg" alt="NHL">
+        <p>{{Нью-Йорк}} <br>{{Айлендерс}}</p>
+      </a>
+      <a class="team team-5" href="https://www.nhl.com/rangers" target="_blank">
+        <img src="img/05_team.jpg" alt="NHL">
+        <p>{{Нью-Йорк}} <br>{{Рейнджерс}}</p>
+      </a>
+      <a class="team team-6" href="https://www.nhl.com/flyers" target="_blank">
+        <img src="img/06_team.jpg" alt="NHL">
+        <p>{{Филадельфия}} <br>{{Флайерз}}</p>
+      </a>
+      <a class="team team-7" href="https://www.nhl.com/penguins" target="_blank">
+        <img src="img/07_team.jpg" alt="NHL">
+        <p>{{Питтсбург}} <br>{{Пингвинз}}</p>
+      </a>
+      <a class="team team-8" href="https://www.nhl.com/capitals" target="_blank">
+        <img src="img/08_team.jpg" alt="NHL">
+        <p>{{Вашингтон}} <br>{{Кэпиталз}}</p>
+      </a>
+    </div>
+
+    <div class="division division-4 hidden">
+      <a class="team team-1" href="https://www.nhl.com/bruins" target="_blank">
+        <img src="img-2/01_team.jpg" alt="NHL">
+        <p>{{Бостон}}<br>{{Брюинз}}</p>
+      </a>
+      <a class="team team-2" href="https://www.nhl.com/sabres" target="_blank">
+        <img src="img-2/02_team.jpg" alt="NHL">
+        <p>{{Баффало}} <br>{{Сэйбрз}}</p>
+      </a>
+      <a class="team team-3" href="https://www.nhl.com/redwings" target="_blank">
+        <img src="img-2/03_team.jpg" alt="NHL">
+        <p>{{Детройт}} <br>{{Ред Уингз}}</p>
+      </a>
+      <a class="team team-4" href="https://www.nhl.com/panthers" target="_blank">
+        <img src="img-2/04_team.jpg" alt="NHL">
+        <p>{{Флорида}} <br>{{Пэнтерз}}</p>
+      </a>
+      <a class="team team-5" href="https://www.nhl.com/canadiens" target="_blank">
+        <img src="img-2/05_team.jpg" alt="NHL">
+        <p>{{Монреаль}} <br>{{Канадиенс}}</p>
+      </a>
+      <a class="team team-6" href="https://www.nhl.com/senators" target="_blank">
+        <img src="img-2/06_team.jpg" alt="NHL">
+        <p>{{Оттава}} <br>{{Сенаторз}}</p>
+      </a>
+      <a class="team team-7" href="https://www.nhl.com/lightning" target="_blank">
+        <img src="img-2/07_team.jpg" alt="NHL">
+        <p>{{Тампа-Бэй}} <br>{{Лайтнинг}}</p>
+      </a>
+      <a class="team team-8" href="https://www.nhl.com/mapleleafs" target="_blank">
+        <img src="img-2/08_team.jpg" alt="NHL">
+        <p>{{Торонто}} <br>{{Мэйпл Лифс}}</p>
+      </a>
+    </div>
+
+    
+
+
+  </div>
+</div>
+
+<div class="footer">
+  <div class="lang-version">
+      <a href="?ru" class="lang lang-ru"><img src="img/01_flag_ru.png"></a>
+      <a href="?en" class="lang lang-en"><img src="img/02_flag_en.png"></a>
+  </div>
+  <div class="anons-game">
+      <p>{{Хочешь проверить свое знание команд НХЛ?}}</p>
+      <a class="play-game" href="../NHL_game/game.html">{{Играть}}</a>
+  </div>
+  <div class="made-with-love">
+      <p>{{Cделано с}} <b class="heart">❤</b> {{к хоккею}}</p>
+  </div>
+</div>
+
+
+
+<script src="dict.js"></script>
+<script type="text/javascript">
+
+function translate(str, lang){
+  while(true){
+    var pattern = "{{.+?}}";
+    var found = str.match(pattern);
+    if(!found) {
+      return str;
+    }
+    var word_initial = found[0].replace("{{", "").replace("}}", "");
+    var word_translated = ru_en[word_initial];
+    var translation = "";
+
+    if("ru" == lang) {
+      translation = word_initial;
+    } else if(typeof word_translated == "undefined") {
+      translation = word_initial;
+    } else {
+      translation = word_translated;
+    }
+
+    str = str.replace(/\{\{.+?\}\}/, translation)
+  }
+  return str;
+}
+var lang = "?en" == window.location.search ? "en" : "ru";
+
+var str = document.querySelector("body").innerHTML;
+var translated = translate(str, lang);
+document.querySelector("body").innerHTML = translated;
+
+</script>
+
+<script type="text/javascript">
+
+function selectDivision(element){
+    var divisions = document.querySelectorAll('.division');
+    for (var j = 0; j < divisions.length; j++) {
+        divisions[j].classList.add('hidden');
+    }
+    var nameDivision = element.dataset.division;
+    var activeDivision = document.querySelector("." + nameDivision);
+    activeDivision.classList.remove('hidden');
+
+    var links = document.querySelectorAll('.link-division');
+    for (var j = 0; j < divisions.length; j++) {
+        links[j].classList.remove('active');
+    }
+    element.classList.add('active');
+
+    var confs = document.querySelectorAll('.conf');
+    for (var j = 0; j < confs.length; j++) {
+        confs[j].classList.remove('active');
+    }
+
+    var nameConf = element.dataset.conf;
+    var activeConf = document.querySelector("." + nameConf);
+    activeConf.classList.add('active');
+}
+
+var links = document.querySelectorAll('.link-division');
+for (var i = 0; i < links.length; i++) {
+
+    links[i].onclick = function(event){
+        var selectedLink = event.currentTarget;
+        selectDivision(selectedLink);
+    }
+}
+
+var selectedDivision = 1;
+function selectNextDivision(){
+  selectedDivision++;
+  if (selectedDivision > 4) {
+    selectedDivision = 1;
+  }
+  var selectedLink = document.querySelector(".link-division-" + selectedDivision);
+  selectDivision(selectedLink);
+}
+
+function selectPrevDivision(){
+  selectedDivision--;
+  if (selectedDivision < 1) {
+    selectedDivision = 4;
+  }
+  var selectedLink = document.querySelector(".link-division-" + selectedDivision);
+  selectDivision(selectedLink);
+}
+
+var linkDivisionPrev = document.querySelector(".link-division-prev");
+linkDivisionPrev.onclick = function(event){
+    selectPrevDivision();
+}
+
+var linkDivisionNext = document.querySelector(".link-division-next");
+linkDivisionNext.onclick = function(event){
+    selectNextDivision();
+}
+
+document.onkeydown = function(event){
+  if("ArrowLeft" == event.code) {
+    selectPrevDivision(); 
+  } 
+
+  if("ArrowRight" == event.code){
+    selectNextDivision();
+  }
+}
+
+</script>
+
+</body>
+</html>
